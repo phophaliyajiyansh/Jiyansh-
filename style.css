@@ -625,3 +625,31 @@ footer p {
     h1.sub-glitch { font-size: 2.5rem; }
     .features { flex-direction: column; gap: 30px; }
 }
+
+/* --- MUSIC TOGGLE BUTTON (HUD STYLE) --- */
+#music-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 1200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+    transition: 0.3s ease;
+}
+
+#music-toggle:hover {
+    background: var(--primary);
+    color: var(--dark);
+    box-shadow: 0 0 30px var(--primary);
+    transform: scale(1.1);
+}
