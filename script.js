@@ -9,6 +9,56 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500);
     }, 1500); // Fake load time
 
+
+    // 0. Background Music Control
+const bgMusic = document.getElementById("bg-music");
+const musicToggle = document.getElementById("music-toggle");
+
+bgMusic.volume = 0.3; // default volume
+let musicPlaying = false;
+
+musicToggle.addEventListener("click", () => {
+    if (!musicPlaying) {
+        bgMusic.play();
+        fadeIn(bgMusic);
+        musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
+        musicPlaying = true;
+    } else {
+        fadeOut(bgMusic);
+        musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+        musicPlaying = false;
+    }
+});
+
+// Smooth fade in
+function fadeIn(audio) {
+    audio.volume = 0;
+    let v = 0;
+    const fade = setInterval(() => {
+        if (v < 0.3) {
+            v += 0.02;
+            audio.volume = v;
+        } else {
+            clearInterval(fade);
+        }
+    }, 100);
+}
+
+// Smooth fade out
+function fadeOut(audio) {
+    let v = audio.volume;
+    const fade = setInterval(() => {
+        if (v > 0.02) {
+            v -= 0.02;
+            audio.volume = v;
+        } else {
+            audio.pause();
+            clearInterval(fade);
+        }
+    }, 100);
+}
+
+
     // 2. Navbar Scroll Effect
     const navbar = document.querySelector(".navbar");
     window.addEventListener("scroll", () => {
